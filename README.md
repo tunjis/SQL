@@ -1,4 +1,4 @@
-# 📊  SQL Portfolio Showcase: World Database Analysis <a href="https://www.mysql.com/" target="_blank" rel="noreferrer"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" width="36" height="36" alt="MySQL"/> **MySQL** </a>&nbsp;
+# 📊 World-Database-Analysis_SQL <a href="https://www.mysql.com/" target="_blank" rel="noreferrer"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" width="36" height="36" alt="MySQL"/> **MySQL** </a>&nbsp;
 
 <a href="https://www.mysql.com/" target="_blank" rel="noreferrer"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" width="36" height="36" alt="MySQL"/> </a>&nbsp; [word db(1).sql](https://justit831-my.sharepoint.com/:u:/g/personal/justincracium_bootcamp_justit_co_uk/EYFUDcPxgehEhuULTiBi8-EBkN6T5jyUOKS7JTGi18Ei1w?e=xqeYqF)
 
