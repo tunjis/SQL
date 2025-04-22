@@ -139,15 +139,15 @@ Here are the specific SQL queries used to address the analytical tasks based on 
     ```sql
     SELECT
         country.Name AS CountryName,
-        ROUND(AVG(city.Population), 0) AS AverageCityPopulation
+        ROUND(AVG(city.Population), 0) AS AverageCityPopulation -- Calculate and round average
     FROM
         city
-    JOIN
+    JOIN  -- INNER JOIN is default
         country ON city.CountryCode = country.Code
     GROUP BY
-        country.Code, country.Name
+        country.Code, country.Name -- Group results per country
     ORDER BY
-        country.Name ASC;
+        country.Name ASC; -- Sort alphabetically
     ```
 
 16. **Capital Cities Population Comparison:** List capital cities worldwide, ordered by population.
@@ -159,9 +159,9 @@ Here are the specific SQL queries used to address the analytical tasks based on 
     FROM
         city
     JOIN
-        country ON city.ID = country.Capital
+        country ON city.ID = country.Capital -- Link city to country using the Capital ID
     ORDER BY
-        city.Population DESC;
+        city.Population DESC; -- Order by the capital's population
     ```
 
 17. **Countries with Low Population Density:** Identify the 25 countries with the lowest population density (people per square km).
@@ -170,14 +170,14 @@ Here are the specific SQL queries used to address the analytical tasks based on 
         Name,
         Population,
         SurfaceArea,
-        ROUND((Population / SurfaceArea), 2) AS PopulationDensity_PerSqKm
+        ROUND((Population / SurfaceArea), 2) AS PopulationDensity_PerSqKm -- Calculate and round density
     FROM
         country
     WHERE
-        SurfaceArea > 0 AND Population > 0
+        SurfaceArea > 0 AND Population > 0 -- Exclude uninhabited areas or those with zero area
     ORDER BY
-        PopulationDensity_PerSqKm ASC
-    LIMIT 25;
+        PopulationDensity_PerSqKm ASC -- Order by density, lowest first
+    LIMIT 25; -- Show the 25 least dense
     ```
 
 18. **Cities with High GNP per Capita (Country Level):** Identify cities located in countries with an above-average Gross National Product (GNP) per capita.
@@ -185,20 +185,21 @@ Here are the specific SQL queries used to address the analytical tasks based on 
     SELECT
         city.Name AS CityName,
         country.Name AS CountryName,
-        ROUND((country.GNP / country.Population), 2) AS CountryGNP_PerCapita
+        ROUND((country.GNP / country.Population), 2) AS CountryGNP_PerCapita -- Show country's figure
     FROM
         city
     JOIN
         country ON city.CountryCode = country.Code
     WHERE
-        country.Population > 0 AND country.GNP > 0
+        country.Population > 0 AND country.GNP > 0 -- Ensure valid data for calculation
         AND (country.GNP / country.Population) > (
+             -- Subquery calculates the overall average country GNP per capita
             SELECT AVG(GNP / Population)
             FROM country
             WHERE Population > 0 AND GNP > 0 AND GNP IS NOT NULL
         )
     ORDER BY
-        CountryGNP_PerCapita DESC,
+        CountryGNP_PerCapita DESC, -- Show cities in highest GNP-per-capita countries first
         country.Name ASC,
         city.Name ASC;
     ```
